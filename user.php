@@ -34,6 +34,13 @@
                 </div>
                 <?php
             }
+            else {
+                ?>
+                <div class="alert alert-warning">
+                    You suck!
+                </div>
+                <?php
+            }
         ?>
     </div>
 </body>
