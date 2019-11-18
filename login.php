@@ -6,19 +6,27 @@
         exit;
     }
 
-    if (!isset($_POST['username'], $_POST['password'])) {
+    if (!isset($_REQUEST['username'], $_REQUEST['password'])) {
         header('Location: ./');
         exit;
     }
     
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_REQUEST['username'];
+    $password = $_REQUEST['password'];
 
     $con = connect();
-    $getUser = mysqli_query($con, "SELECT * FROM users WHERE username='$username' AND password='$password';");
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password';";
+
+    $getUser = mysqli_query($con, $sql);
+
+    if (!$getUser) {
+        header('Location: ./');
+        exit;
+    }
+
     $user = mysqli_fetch_assoc($getUser);
 
     $_SESSION['id'] = $user['id'];
-    header('Location: ./user.php');
+    header('Location: ./');
     exit;
 ?>
