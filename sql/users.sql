@@ -5,3 +5,7 @@ CREATE TABLE users(
     is_admin TINYINT(1) DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO users(username, password, is_admin) VALUES
+    ('admin', 'password', 1),
+    ('joakim', 'ErEnIdiot', 0);
